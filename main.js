@@ -96,4 +96,40 @@ ctx2.fillText("3", 50, 75);
 
 
 
+// test 3
+hdnctx.clearRect(0, 0, WIDTH, HEIGHT);
+
+let something = ctx.createImageData(WIDTH, HEIGHT);
+let img322 = new Uint32Array(something.data.buffer);
+
+// const color = colorToUint32({r: 0, g: 0, b: 255, a: 0.5});
+
+for (var i = 0 - 1; i <= img322.length; i++) {
+  img322[i] = (255 << 24) + i * 200;
+}
+
+const canvas3 = document.getElementById('canvas3');
+const ctx3 = canvas3.getContext('2d');
+ctx3.imageSmoothingEnabled = false;
+
+canvas3.width = WIDTH;
+canvas3.height = HEIGHT;
+
+
+
+ctx3.putImageData(something, 0, 0);
+
+
+
+
+ctx3.fillStyle = blue50Perc;
+ctx3.fillRect(0, 0, WIDTH / 2, HEIGHT / 2);
+
+ctx3.fillStyle = 'black';
+ctx3.font = '60px sans-serif';
+ctx3.fillText("4", 50, 75);
+
+
+
+
 
