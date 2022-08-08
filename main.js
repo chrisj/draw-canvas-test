@@ -50,3 +50,50 @@ ctx.font = '60px sans-serif';
 ctx.fillText("2", 50, 75);
 
 
+
+
+
+const colorToUint32 = (color) => {
+  return ((255 * color.a) << 24
+					| color.b << 16
+					| color.g << 8
+					| color.r << 0);
+}
+
+
+// test 2
+hdnctx.clearRect(0, 0, WIDTH, HEIGHT);
+
+let segcoloring = hdnctx.createImageData(WIDTH, HEIGHT);
+let img32 = new Uint32Array(segcoloring.data.buffer);
+
+const color = colorToUint32({r: 0, g: 0, b: 255, a: 0.5});
+
+for (var i = 0 - 1; i <= img32.length / 2; i++) {
+  img32[i] = color;
+}
+
+hdnctx.putImageData(segcoloring, 0, 0);
+
+
+const canvas2 = document.getElementById('canvas2');
+const ctx2 = canvas2.getContext('2d');
+ctx2.imageSmoothingEnabled = false;
+
+canvas2.width = WIDTH;
+canvas2.height = HEIGHT;
+
+
+
+ctx2.fillStyle = red;
+ctx2.fillRect(0, 0, WIDTH, HEIGHT);
+ctx2.drawImage(hdncanvas, 0, 0);
+
+ctx2.fillStyle = 'black';
+ctx2.font = '60px sans-serif';
+ctx2.fillText("3", 50, 75);
+
+
+
+
+
